@@ -15,21 +15,18 @@ import dagger.Provides;
  */
 
 
-@Module
-public class DaggerModule {
+@Module public class AppModule {
 
     private final MyApplication application;
 
-    public DaggerModule(MyApplication application) {
+    public AppModule(MyApplication application) {
         this.application = application;
     }
 
-    @Provides @Singleton
-    Context provideApplicationContext() { return application; }
+    @Provides @Singleton Context provideApplicationContext() { return application; }
 
-    @Provides @Singleton
-    SharedPreferences provideApplicationSharedPreferences(Context app) {
-        return app.getSharedPreferences("My_Preds", Context.MODE_PRIVATE);
+    @Provides @Singleton SharedPreferences provideApplicationSharedPreferences(Context app) {
+        return app.getSharedPreferences("My_Prefs", Context.MODE_PRIVATE);
     }
 
 

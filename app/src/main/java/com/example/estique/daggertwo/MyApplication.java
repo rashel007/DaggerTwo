@@ -2,8 +2,9 @@ package com.example.estique.daggertwo;
 
 import android.app.Application;
 
-import com.example.estique.daggertwo.dagger.DaggerComponent;
-import com.example.estique.daggertwo.dagger.DaggerDaggerComponent;
+import com.example.estique.daggertwo.dagger.AppComponent;
+import com.example.estique.daggertwo.dagger.AppModule;
+import com.example.estique.daggertwo.dagger.DaggerAppComponent;
 
 /**
  * Created by estique on 12/15/17.
@@ -11,17 +12,19 @@ import com.example.estique.daggertwo.dagger.DaggerDaggerComponent;
 
 public class MyApplication extends Application {
 
-    DaggerComponent daggerComponent;
+    AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        daggerComponent = DaggerDaggerComponent.builder().build();
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+
+        appComponent.inject(this);
 
     }
 
-    public DaggerComponent getDaggerComponent() {
-        return daggerComponent;
+    public AppComponent getAppComponent() {
+        return this.appComponent;
     }
 }

@@ -11,8 +11,8 @@ import dagger.Component;
  * Created by estique on 12/15/17.
  */
 
-@Singleton @Component(modules = DaggerModule.class)
-public interface DaggerComponent {
+@Singleton @Component(modules = AppModule.class)
+public interface AppComponent {
 
     void inject(MyApplication application);
 
